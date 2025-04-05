@@ -18,16 +18,18 @@ def proxy(path):
     # Loại bỏ header Host để tránh lỗi
     headers = {k: v for k, v in request.headers if k.lower() != 'host'}
 
-    # Forward request
+    # Forward request bằng cách sử dụng phương thức HTTP tương ứng
     try:
-        response = session.request(
-            method=request.method,
-            url=target_url,
-            headers=headers,
-            data=request.get_data(),
-            cookies=request.cookies,
-            allow_redirects=False,
-        )
+        if request.method == 'GET':
+            response = session.get(target_url, headers=headers, data=request.get_data(), cookies=request.cookies, allow_redirects=False)
+        elif request.method == 'POST':
+            response = session.post(target_url, headers=headers, data=request.get_data(), cookies=request.cookies, allow_redirects=False)
+        elif request.method == 'PUT':
+            response = session.put(target_url, headers=headers, data=request.get_data(), cookies=request.cookies, allow_redirects=False)
+        elif request.method == 'DELETE':
+            response = session.delete(target_url, headers=headers, data=request.get_data(), cookies=request.cookies, allow_redirects=False)
+        elif request.method == 'PATCH':
+            response = session.patch(target_url, headers=headers, data=request.get_data(), cookies=request.cookies, allow_redirects=False)
 
         # Gửi response về client
         excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
