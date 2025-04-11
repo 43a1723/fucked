@@ -31,6 +31,3 @@ def gettext():
         for sid, info in active_sessions.items()
     )
     return raw, 200, {'Content-Type': 'text/plain'}
-
-def handler(request, *args, **kwargs):
-    return app(request.environ, start_response=lambda *x: None)
