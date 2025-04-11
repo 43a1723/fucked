@@ -1,3 +1,2 @@
 Flask
-tls_client
-typing_extensions
+requests
