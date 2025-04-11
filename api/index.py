@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 SESSIONS = {}
 LAST_REQUEST = {}  # Dùng để lưu thời gian upload gần nhất của mỗi session hoặc IP
-
+# lmao
 @app.route('/upload', methods=['POST'])
 def upload():
     try:
